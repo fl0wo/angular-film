@@ -1,0 +1,44 @@
+<div>
+
+  <div class="outer">
+    <div class="field has-addons">
+      <div class="control">
+        <input class="input is-rounded" type="text" [(ngModel)]="cerca" autocomplete="on"
+          placeholder="Cerca un Film Per Titolo">
+      </div>
+    </div>
+    <div class="select is-rounded">
+      <select [(ngModel)]="cerca_by_categoria">
+        <option>Tutte le Categorie</option>
+        <option 
+        *ngFor="let option of prodottoService.getCategories()"> {{option.tipo}} </option>
+      </select>
+    </div>
+  </div>
+
+  <div class="box" *ngFor="let film of prodottoService.getProdotti() | cerca_by_categoria:cerca_by_categoria | cerca:cerca; let i = index;"
+    [routerLink]="['/','prodotto',i]">
+    <div>
+      <div>
+        <font size="+10"> {{film.film.title}}</font>
+        <font size="+1">{{film.film.year}} </font>
+      </div>
+      <br>
+      <div> Direttore : {{film.film.director}}</div>
+      <div> Lingue Disponibili : {{film.film.languages.join(', ')}}</div>
+      <div> Attori : {{film.film.actors.join(', ')}}</div>
+      <div> Generi : {{film.film.categories.join(', ')}}</div>
+      <br>
+
+      <div class="row">
+
+        <div class="column" *ngFor="let pic of film.film.immages">
+          <img style=" width : 80% " src="{{pic}}">
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </div>

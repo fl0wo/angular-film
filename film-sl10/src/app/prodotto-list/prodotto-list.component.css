@@ -1,0 +1,41 @@
+* {margin: 5; padding: 20;}
+#container {height: 100%; width:100%; font-size:0;}
+#left, #middle, #right {display: inline-block; *display: inline; zoom: 1; vertical-align: top; font-size: 12px;}
+#left {width: 25%;}
+#middle {width: 50%;}
+#right {width: 25%;}
+
+* {
+    box-sizing: border-box;
+  }
+  
+  .column {
+    float: left;
+    width: 33.33%;
+    padding: 5px;
+  }
+  
+  /* Clearfix (clear floats) */
+  .row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  
+  .row {
+    width: 100%;
+    margin: 0 auto;
+  }
+  .block {
+    width: 100px;
+    float: left;
+  }
+
+  .outer {
+    display:flex;
+    justify-content: center;
+    padding: 10px;
+  }
+  .outer > div {
+    margin:20px;
+  }
